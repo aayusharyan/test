@@ -21,7 +21,6 @@ const PlayerContainer = () => {
     const audioPlayer = useRef(null);
     const [isRepeat, setRepeat] = useState(false);
     const dispatch = useDispatch();
-    const playlist = useSelector((state) => state.playlist);
 
     const appState = useSelector((state) => state);
     const image_url = `https://api.napster.com/imageserver/v2/albums/${appState?.currently_playing.albumId}/images/200x200.jpg`;
@@ -85,7 +84,7 @@ const PlayerContainer = () => {
     }
 
     const toggleFavourite = () => {
-      if(appState.favourite_list[appState.currently_playing.id] == undefined) {
+      if(appState.favourite_list[appState.currently_playing.id] === undefined) {
         dispatch(makeFavourite(appState.currently_playing));
       } else {
         dispatch(removeFavourite(appState.currently_playing.id));
@@ -130,13 +129,13 @@ const PlayerContainer = () => {
           }}
         />
         <Stack direction="row" sx={{pb: 2, pl: 2, pr: 4}} spacing={2} justifyContent="space-between" alignItems="center">
-            <img height="75"  src={image_url} />
+            <img height="75"  src={image_url} alt="Album Cover" />
   
             <Box sx={{pl: 18}}>
               <Stack direction="row" spacing={2} alignItems="center">
 
                 <IconButton aria-label="delete" onClick={toggleFavourite}>
-                  {appState.favourite_list[appState.currently_playing.id] == undefined ? 
+                  {appState.favourite_list[appState.currently_playing.id] === undefined ? 
                     <FavoriteBorderIcon />
                   :
                     <FavoriteIcon /> 

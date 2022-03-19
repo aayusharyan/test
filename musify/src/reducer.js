@@ -45,7 +45,9 @@ const reducer = (currentState = initiaState, action) => {
                 newState.playing_index = 0;
                 newState.currently_playing = newState.playlist[0];
             }
-            
+            break;
+        default:
+            break;
     }
 
     return newState;

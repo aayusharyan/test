@@ -3,12 +3,12 @@ import { FavoriteBorder, PlayArrow, Favorite, PlaylistAdd } from '@mui/icons-mat
 import { TableRow, TableCell, IconButton, Typography, Stack } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeFavourite, removeFavourite, setPlayNow, addToPlaylist } from '../actions';
-import { Link, useMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const SongTableRow = (props) => {
     const dispatch    = useDispatch();
-    const isFavourite = useSelector((state) => state.favourite_list[props.data.id] != undefined );
-    const isPlaying   = useSelector((state) => state.currently_playing.id == props.data.id);
+    const isFavourite = useSelector((state) => state.favourite_list[props.data.id] !== undefined );
+    const isPlaying   = useSelector((state) => state.currently_playing.id === props.data.id);
     const image_url   = `https://api.napster.com/imageserver/v2/albums/${props.data?.albumId}/images/150x150.jpg`;
 
     const playSong = () => {
@@ -31,14 +31,14 @@ const SongTableRow = (props) => {
             <TableCell component="th" scope="row">{props.index + 1}.</TableCell>
             <TableCell>
             <Stack direction="row" alignItems="center" spacing={2}>
-                {(props.owner != "album") ? (
-                    <img style={{width: "3rem", height: "3rem"}} src={image_url} />
+                {(props.owner !== "album") ? (
+                    <img style={{width: "3rem", height: "3rem"}} src={image_url} alt="Album Cover" />
                 ) : false }
                 <Typography variant="h6">{props.data?.name}</Typography>
             </Stack>
             </TableCell>
             <TableCell>
-                {(props.owner == "artist") ? (
+                {(props.owner === "artist") ? (
                     <Link to={`/albums/${props.data?.albumId}`} >
                         <Typography variant="h6">
                             {props.data?.albumName}

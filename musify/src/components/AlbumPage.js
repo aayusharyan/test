@@ -25,7 +25,7 @@ const AlbumPage = () => {
             const song_data = await song_response.json();
             setSongList(song_data.tracks);
         })();
-    }, []);
+    }, [album_id]);
 
     const changePlaylist = () => {
         dispatch(replacePlaylist(songList));
@@ -45,7 +45,7 @@ const AlbumPage = () => {
                 <Stack direction="column" spacing={4}>
                     <Typography variant='h2' sx={{pt: 4}}>{albumDetails?.name}</Typography>
                     <Typography variant='h3'>
-                        {(albumDetails?.contributingArtists?.primaryArtist == "art.0") ? (
+                        {(albumDetails?.contributingArtists?.primaryArtist === "art.0") ? (
                             albumDetails?.artistName
                         ) : ( 
                             <Link to={`/artists/${albumDetails?.contributingArtists?.primaryArtist}`} style={{textDecoration: "none"}}>

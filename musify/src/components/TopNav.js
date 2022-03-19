@@ -2,9 +2,7 @@ import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import { AppBar, Toolbar, Typography, InputBase, Switch, FormControlLabel } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import SideNav from './SideNav';
 import {AppName} from '../constants';
 import { useNavigate } from 'react-router-dom';
 
@@ -21,16 +19,6 @@ const Search = styled('div')(({ theme }) => ({
     marginLeft: theme.spacing(1),
     width: 'auto',
   },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({

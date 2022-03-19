@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Grid from '@mui/material/Grid';
 import { NAPSTER_API_KEY } from '../constants';
-import ArtistCard from './ArtistCard';
 import AlbumCard from './AlbumCard';
 
 const TopAlbumsContainer = () => {
